@@ -1,0 +1,32 @@
+.btn-create{
+    color: #fff;
+    background-color: #1F2071;
+    width: 224px;
+
+}
+input,.btn{
+    border-radius: 20px;
+}
+.btn-update{
+  background-color: #1F2071;
+  color: #fff;
+}
+@media screen and (max-width:760px){
+  .btn{
+    width: 100px;
+  }  
+  table{
+    width: 470px !important;
+    margin: auto;
+  }
+  img{
+    width: 50px;
+  }
+  .btn{
+    margin: 5px 0px !important;
+  }
+}
+
+.cursor{
+  cursor: pointer;
+}
