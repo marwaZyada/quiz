@@ -11,17 +11,18 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class CreateCategoryComponent {
   CategoryForm:FormGroup=new FormGroup({
-'name':new FormControl(null),
-'description':new FormControl(null),
-'image':new FormControl(null)
+"name":new FormControl(null),
+"description":new FormControl(null),
+"image":new FormControl(null)
   })
 constructor(private _categoryService:CategoryService){
 
 }
-Add(form1:FormGroup){
-  console.log(form1.value)
+Add(form1:any){
+  console.log(form1)
+ 
 
-  this._categoryService.AddCategory(form1?.value).subscribe(
+  this._categoryService.AddCategory(form1.value).subscribe(
     {next:(res)=>console.log(res)
   })
 

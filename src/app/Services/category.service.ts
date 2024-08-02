@@ -23,9 +23,19 @@ GetSpecificCateegory(id:number):Observable<any>{
 }
 
   // add 
-  AddCategory(body:any):Observable<any>{
-
-    return this._http.post<any>("http://foodsystem.tryasp.net/Category",body,{'headers':this.headers} )
+  AddCategory(data:any):Observable<any>{
+    const formData = new FormData();
+  
+    // Append form fields to FormData object
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        formData.append(key,data[key]);
+      }
+    } 
+const headers = new HttpHeaders({
+   token:this.token
+})
+    return this._http.post("http://foodsystem.tryasp.net/Category",formData,{ headers })
   }
     // Delete 
     DeleteCategory(id:any):Observable<any>{
