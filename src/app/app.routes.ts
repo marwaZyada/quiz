@@ -9,7 +9,7 @@ import { CreateCategoryComponent } from './Components/create-category/create-cat
 import { UpdateCategoryComponent } from './Components/update-category/update-category.component';
 
 export const routes: Routes = [
-    {path:"",redirectTo:"User",pathMatch:'full'},
+    {path:"",redirectTo:"Category",pathMatch:'full'},
     {path:"Category",component:CategoriesComponent,title:"Category"},
     {path:"Create",component:CreateCategoryComponent},
     {path:"Product",component:ProductsComponent,title:"Product"},
