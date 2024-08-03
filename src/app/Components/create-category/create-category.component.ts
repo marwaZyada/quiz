@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../../Services/category.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-category',
@@ -15,7 +16,7 @@ export class CreateCategoryComponent {
 "description":new FormControl(null),
 "image":new FormControl(null)
   })
-constructor(private _categoryService:CategoryService){
+constructor(private _categoryService:CategoryService,private _router:Router){
 
 }
 Add(form1:any){
@@ -23,7 +24,9 @@ Add(form1:any){
  
 
   this._categoryService.AddCategory(form1.value).subscribe(
-    {next:(res)=>console.log(res)
+    {next:(res)=>{console.log(res)
+      this._router.navigate(['/Category'])
+    }
   })
 
 }

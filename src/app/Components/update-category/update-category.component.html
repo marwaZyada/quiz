@@ -1,7 +1,12 @@
-<form (ngSubmit)="Add(CategoryForm)" [formGroup]="CategoryForm">
+<form (ngSubmit)="UpdateItem(CategoryForm)" [formGroup]="CategoryForm">
+    <div class="form-group">
+        <label >Id</label>
+        <input type="text" class="form-control"  placeholder="Id" formControlName="id"  readonly  >
+       
+      </div>
     <div class="form-group">
         <label >Name</label>
-        <input type="text" class="form-control"  placeholder="Enter Name" formControlName="name">
+        <input type="text" class="form-control"  placeholder="Enter Name" value="maa" formControlName="name">
        
       </div>
       <div class="form-group">
@@ -14,4 +19,5 @@
       </div>
       <a class="btn btn-primary me-3 mt-2"routerLink="/Category">Back To Home</a>
       <button type="submit" class="btn btn-primary mt-2">Submit</button>
+     
     </form>

@@ -23,6 +23,10 @@ search_text:string=""
 
 // get categories 
 ngOnInit(): void {
+ this.GetCategories()
+}
+
+GetCategories(){
   this._categorySarvice.GetCateegories().subscribe(data=>{
     console.log(data)
     this.Categories=data
@@ -32,16 +36,14 @@ ngOnInit(): void {
 DeleteItem(id:any){
   this._categorySarvice.DeleteCategory(id).subscribe(data=>{
     console.log(data)
-    this.Categories=data.filter((el:any)=>el.id!=id)
+
+this.GetCategories()
   })
 }
 
- // Update categories 
- UpdateItem(id:any,data:any){
-  this._categorySarvice.UpdateCategory(id,data).subscribe(data=>{
-    console.log(data)
-  })
-}
+
+
+
 }
 
 

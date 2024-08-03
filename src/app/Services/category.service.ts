@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
 token:string="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYXJyd2EzMjUxQGdtYWlsLmNvbSIsImVtYWlsIjoibWFycndhMzI1MUBnbWFpbC5jb20iLCJleHAiOjE3MjY3NTUwNTQsImlzcyI6IkNsZWFuSXNzdWVyIiwiYXVkIjoiQ2xlYW5BdWRpZW5jZSJ9.Fgs91KXthr-XdWCPPbhqY7KC0CMK1JlZf5PZG2sFGr8"
- headers = {'Content-Type':'application/json', 'token':this.token}  
+ headers = { 'token':this.token}  
+ formData = new FormData();
 constructor(private _http:HttpClient) { 
     localStorage.setItem("token",this.token)
   }
@@ -24,26 +25,38 @@ GetSpecificCateegory(id:number):Observable<any>{
 
   // add 
   AddCategory(data:any):Observable<any>{
-    const formData = new FormData();
-  
+    this.formData=new FormData()
     // Append form fields to FormData object
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        formData.append(key,data[key]);
-      }
-    } 
+    this.SendFormateData(data)
 const headers = new HttpHeaders({
    token:this.token
 })
-    return this._http.post("http://foodsystem.tryasp.net/Category",formData,{ headers })
+    return this._http.post("http://foodsystem.tryasp.net/Category",this.formData,{ headers })
   }
     // Delete 
     DeleteCategory(id:any):Observable<any>{
 return this._http.delete(`http://foodsystem.tryasp.net/Category?id=${id}`,{'headers':this.headers})
     }
 // update 
-   UpdateCategory(id:any,body:object):Observable<any>{
-      return this._http.put(`http://foodsystem.tryasp.net/Category?id=${id}`,body,{'headers':this.headers})
+
+   UpdateCategory(data:any):Observable<any>{
+    this.formData=new FormData()
+     // Append form fields to FormData object
+
+     this.SendFormateData(data)
+      return this._http.put(`http://foodsystem.tryasp.net/Category`,this.formData,{'headers':this.headers})
           }
+
+  SendFormateData(data:any){
+   
+  
+    // Append form fields to FormData object
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+       this.formData.append(key,data[key]);
+      }
+    } 
+   
+  }
   
 }

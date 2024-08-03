@@ -6,6 +6,7 @@ import { UserComponent } from './Components/user/user.component';
 import { CategoryDetailsComponent } from './Components/category-details/category-details.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CreateCategoryComponent } from './Components/create-category/create-category.component';
+import { UpdateCategoryComponent } from './Components/update-category/update-category.component';
 
 export const routes: Routes = [
     {path:"",redirectTo:"User",pathMatch:'full'},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path:"Order",component:OrdersComponent,title:"Order"},
     {path:"User",component:UserComponent,title:"User"},
     {path:"Category/:id",component:CategoryDetailsComponent},
+    {path:"UpdateCategory/:id",component:UpdateCategoryComponent},
     {path:"**",component:NotFoundComponent}
 
 ];

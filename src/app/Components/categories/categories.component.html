@@ -27,7 +27,7 @@
         <td><img [src]="'http://foodsystem.tryasp.net'+item.image" width="150px" *ngIf="item.image!=null"/></td>
         <td>{{item.description}}</td>
         <td>{{item.isDelete}}</td>
-        <td><div class="btn btn-update mb-1" (click)="UpdateItem(item.id,item)" >Update</div><div class="btn btn-danger ms-3" (click)="DeleteItem(item.id)">Delete</div></td>
+        <td><div class="btn btn-update mb-1" [routerLink]="['/UpdateCategory',item.id]" >Update</div><div class="btn btn-danger ms-3" (click)="DeleteItem(item.id)">Delete</div></td>
       </tr>
     
     </tbody>
